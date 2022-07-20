@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import teams from "./teams.json";
+import TeamInfo from "./components/TeamInfo";
+import React from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  render() {
+    console.log(teams);
+    return (
+      <div>
+        <p>Hello</p>
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              {teams.map((team) => {
+                return (
+                  <TeamInfo
+                    name={team.name}
+                    shortName={team.shortName}
+                    venue={team.venue}
+                    address={team.address}
+                    email={team.email}
+                    founded={team.founded}
+                    tel={team.phone}
+                    picture={team.crestUrl}
+                  />
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
-
 export default App;
